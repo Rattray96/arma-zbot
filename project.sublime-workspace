@@ -1,0 +1,528 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"prin",
+				"Println	 ƒ"
+			],
+			[
+				"No",
+				"Now	time.Time ƒ"
+			],
+			[
+				"Prin",
+				"Println	 ƒ"
+			],
+			[
+				"Set",
+				"SetOutput	 ƒ"
+			],
+			[
+				"S",
+				"String	string ƒ"
+			],
+			[
+				"GetS",
+				"GetStdHandle	handle syscall.Handle, err error ƒ"
+			],
+			[
+				"get",
+				"getline	[]string, bool ƒ"
+			],
+			[
+				"R",
+				"NewReader	*bufio.Reader ƒ"
+			],
+			[
+				"va",
+				"validateLine	bool ƒ"
+			],
+			[
+				"Seek",
+				"SEEK_SET	 Ɩ"
+			],
+			[
+				"New",
+				"NewScanner	*bufio.Scanner ƒ"
+			],
+			[
+				"pr",
+				"Println	n int, err error ƒ"
+			],
+			[
+				"in",
+				"Init	 ƒ"
+			],
+			[
+				"D",
+				"Date	time.Time ƒ"
+			],
+			[
+				"Lo",
+				"LoadLocation	*time.Location, error ƒ"
+			],
+			[
+				"lo",
+				"Location	struct ʈ"
+			],
+			[
+				"l",
+				"LoadLocation	*time.Location, error ƒ"
+			],
+			[
+				"p",
+				"Println	n int, err error ƒ"
+			],
+			[
+				"im",
+				"import	import (...) ʂ"
+			],
+			[
+				"angu",
+				"angularjs"
+			],
+			[
+				"acc",
+				"accordion-heading"
+			],
+			[
+				"ac",
+				"accordion-group"
+			],
+			[
+				"wa",
+				"Wallet"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "main.go",
+			"settings":
+			{
+				"buffer_size": 1064,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "zanbot/helpers.go",
+			"settings":
+			{
+				"buffer_size": 2103,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "zanbot/rcon.go",
+			"settings":
+			{
+				"buffer_size": 8260,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "zanbot/zanbot.go",
+			"settings":
+			{
+				"buffer_size": 5527,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/Users/anthony/AppData/Roaming/Sublime Text 2/Packages/User/GoGdb.sublime-settings",
+			"settings":
+			{
+				"buffer_size": 29,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "project.sublime-project",
+			"settings":
+			{
+				"buffer_size": 627,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"GoSublime: ",
+				"GoSublime: Run Tests"
+			],
+			[
+				"pcip",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"package",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 472.0
+	},
+	"console":
+	{
+		"height": 244.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/D/GitRepos/courier-app/server/src/main.go",
+		"/D/GitRepos/arma-zbot/bot-settings.cfg",
+		"/D/GitRepos/arma-zbot/src/zanbot/helpers_test.go",
+		"/C/Users/anthony/AppData/Roaming/Sublime Text 2/Packages/GoSublime/USAGE.md",
+		"/C/Users/anthony/AppData/Roaming/Sublime Text 2/Packages/User/GoSublime.sublime-settings",
+		"/C/Users/anthony/AppData/Roaming/Sublime Text 2/Packages/User/GoGdb.sublime-settings",
+		"/D/golang/hello world/main.go",
+		"/D/golang/hello world/prj.sublime-project",
+		"/C/Users/anthony/AppData/Roaming/Sublime Text 2/Packages/GoGdb/GoGdb.sublime-settings",
+		"/C/Users/anthony/AppData/Roaming/Sublime Text 2/Packages/GoSublime/GoSublime.sublime-settings",
+		"/C/Users/anthony/AppData/Roaming/Sublime Text 2/Packages/User/GoSublime/windows-x64/log.txt",
+		"/C/GitRepos/evebuddy/app/views/api/api-wallet.jade",
+		"/C/GitRepos/evebuddy/app/views/api/api-mail.jade",
+		"/C/GitRepos/evebuddy/app/views/api/api-contacts.jade",
+		"/C/GitRepos/evebuddy/app/bower_components/bootstrap/dist/css/bootstrap.css",
+		"/C/GitRepos/evebuddy/app/bower_components/bootstrap/dist/css/bootstrap.min.css",
+		"/C/github/eve-buddy/app/partials/home.jade",
+		"/C/github/eve-buddy/app/partials/api_dashboard.jade",
+		"/C/github/eve-buddy/app/partials/api_wallet.jade",
+		"/C/github/eve-buddy/app/styles/app.less",
+		"/C/github/eve-buddy/dist/releases/MyAwesomeApp/win/MyAwesomeApp/nw.pak",
+		"/C/github/evebuddy/app/partials/apichecker/Assets.jade",
+		"/C/github/evebuddy/app/partials/apichecker/contacts.jade",
+		"/C/github/evebuddy/app/partials/apichecker/contracts.jade",
+		"/C/github/evebuddy/app/partials/apichecker/dashboard.jade",
+		"/C/github/evebuddy/app/partials/apichecker/killboard.jade",
+		"/C/github/evebuddy/app/partials/apichecker/mail.jade",
+		"/C/github/evebuddy/app/partials/apichecker/wallet.jade",
+		"/C/github/evebuddy/_public/js/dontUseMe.map",
+		"/C/github/evebuddy/_public/js/dontUseMe",
+		"/C/github/evebuddy/app/partials/apichecker/Wallet - Copy.jade",
+		"/C/github/evebuddy/app/partials/apichecker/Wallet.jade",
+		"/C/github/evebuddy/app/partials/nav.jade",
+		"/C/github/evebuddy/app/app.coffee",
+		"/C/github/evebuddy/app/partials/todo.jade",
+		"/C/github/evebuddy/app/assets/package.json",
+		"/C/github/evebuddy/config.coffee",
+		"/C/github/evebuddy/app/partials/partial1.jade",
+		"/C/github/evebuddy/app/scripts/datastore.coffee",
+		"/C/github/evebuddy/package.json"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"}\n",
+			"							{{"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 3,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "main.go",
+					"settings":
+					{
+						"buffer_size": 1064,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1004,
+								1004
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 162.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "zanbot/helpers.go",
+					"settings":
+					{
+						"buffer_size": 2103,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								307,
+								307
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 810.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "zanbot/rcon.go",
+					"settings":
+					{
+						"buffer_size": 8260,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1225,
+								1210
+							]
+						],
+						"settings":
+						{
+							"spell_check": true,
+							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 864.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "zanbot/zanbot.go",
+					"settings":
+					{
+						"buffer_size": 5527,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1920,
+								1920
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/GoSublime/syntax/GoSublime-Go.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1404.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/C/Users/anthony/AppData/Roaming/Sublime Text 2/Packages/User/GoGdb.sublime-settings",
+					"settings":
+					{
+						"buffer_size": 29,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								29,
+								29
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "project.sublime-project",
+					"settings":
+					{
+						"buffer_size": 627,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								365,
+								365
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 54.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.9o://C:\\GitRepos\\evebuddy":
+	{
+		"height": 118.0
+	},
+	"output.9o://C:\\Users\\anthony\\AppData\\Roaming\\Sublime Text 2\\Packages":
+	{
+		"height": 263.0
+	},
+	"output.9o://D:\\GitRepos\\arma-zbot\\src":
+	{
+		"height": 180.0
+	},
+	"output.9o://D:\\GitRepos\\arma-zbot\\src\\zanbot":
+	{
+		"height": 222.0
+	},
+	"output.9o://D:\\GitRepos\\courier-app\\server\\src":
+	{
+		"height": 118.0
+	},
+	"output.9o://D:\\golang\\hello world":
+	{
+		"height": 213.0
+	},
+	"output.9o://D:\\golang\\hello world\\src":
+	{
+		"height": 314.0
+	},
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/C/Users/anthony/AppData/Roaming/Sublime Text 2/Packages/GoSublime/USAGE.md"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 172.0,
+	"status_bar_visible": true
+}

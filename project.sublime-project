@@ -1,0 +1,24 @@
+{
+//it can be added by selecting Project>Add Folder to Project.
+"folders":
+[
+    {
+        "path": "/D/GitRepos/arma-zbot/src"
+    }
+],
+"settings":
+{
+    "name": "zbot",
+    "sublimegdb_rargs":"",
+    "sublimegdb_commandline": "gdb --interpreter=mi --args ${binp} ${args}",
+    "sublimegdb_workingdir": "/D/GitRepos/arma-zbot/src",
+    "sublimegdb_go_project": true
+    //Configure Plugin#2
+}
+//support values:
+//${ppath} the project full path.
+//${binp} the executable file full path.
+//${args} running extend arguments.
+//${pkgp} the package path for go build or install.
+//${args} the package path for go build or install.
+}

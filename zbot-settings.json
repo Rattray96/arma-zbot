@@ -1,0 +1,13 @@
+{
+    "RemotExecFile": "./remoteexec.log",
+    "PublicVarFile": "./publicvariable.log",
+    "ScriptsFile": "./scripts.log",
+    "Rcons": [
+        {
+            "Host": "127.0.0.0",
+            "Port": "2302",
+            "Pw":""
+        }
+    ],
+    "TestMode": true
+}
