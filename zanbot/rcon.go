@@ -56,9 +56,7 @@ func rcon(rc rconinfo, ch chan banData, testing bool) {
 
 	//setup rcon connection and make sure it stays connected
 
-	//hard code host for now so cant be stolen. :).
-	rc.Host = "119.252.189.140"
-	fmt.Println("starting rcon @ host 119.252.189.140")
+	fmt.Println("starting rcon @ host:", rc.Host)
 	cmd := exec.Command("BattleNETclient.exe", "-host", rc.Host, "-port", rc.Port, "-password", rc.Pw)
 	// set output pipes to pipe info from battlenet's output
 	ro, wo := io.Pipe()
