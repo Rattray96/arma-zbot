@@ -26,6 +26,7 @@ func main() {
 
 // Init Starts the Bot
 func Init() {
+	go listen()
 	var settings jsonsettings
 	fmt.Println("zBot Created By Anthony \"Zanven\" Poschen.")
 

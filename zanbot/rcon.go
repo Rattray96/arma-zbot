@@ -147,6 +147,9 @@ func rcon(rc rconinfo, ch chan banData, testing bool) {
 				continue
 			}
 			command := "addban " + b.guid + " 0 " + b.name + " | Hacking | PERM | zBot"
+			if b.file == "Web" {
+				command = "addban " + b.guid + " 0 " + b.reason
+			}
 			wi.Write([]byte(command + "\n"))
 			baning[b.guid] = b
 			println("Baning:", b.name, "-", b.guid)

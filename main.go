@@ -13,20 +13,5 @@ func checkError(err error) {
 }
 
 func main() {
-
-	//go listen()
 	zanbot.Init()
-
 }
-
-/*
-func listen() {
-	http.HandleFunc("/", handler)
-	http.ListenAndServe(":4000", nil)
-}
-
-func handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("Incoming msg")
-	w.Write([]byte(r.))
-}
-*/
