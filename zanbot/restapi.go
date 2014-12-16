@@ -58,11 +58,14 @@ func unbanHandle(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Recieved Unban Request for:", t.GUID)
 	go func(s string) {
 		// do some stuff to unban
+		gubanchan <- s
 	}(t.GUID)
 }
 
 func bansyncHandle(w http.ResponseWriter, r *http.Request) {
 	// unban and ban people acordingly.
+	// todo: have a way to push a full community list and trigger each rcon seprating community bans.
+	// and working out which bans to unban. followed by banning everyone who needs to be banned.
 }
 
 func decodeJson(r *http.Request, t interface{}) error {

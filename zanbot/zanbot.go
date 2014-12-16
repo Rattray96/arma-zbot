@@ -15,6 +15,8 @@ import (
 )
 
 var gbanchan chan banData
+var gubanchan chan string
+var gsyncbanchan chan []string
 
 //var grlchan chan []rconinfo
 var tLoc *time.Location
@@ -31,7 +33,10 @@ func Init() {
 	fmt.Println("zBot Created By Anthony \"Zanven\" Poschen.")
 
 	gbanchan = make(chan banData)
+	gubanchan = make(chan string)
+	gsyncbanchan = make(chan []string)
 	rlchan := make(chan []rconinfo)
+
 	settingfile := "./zbot-settings.json"
 	defer close(gbanchan)
 
@@ -52,7 +57,7 @@ func Init() {
 		panic(err)
 	}
 	json.Unmarshal(sf, &settings)
-	go rconManager(gbanchan, rlchan, settings.TestMode)
+	go rconManager(gbanchan, gubanchan, gsyncbanchan, rlchan, settings.TestMode)
 	rlchan <- settings.Rcons
 
 	// @TODO: convert this into its own file manager and pass in new configs if the file changes so this gets hot reloaded if its valid and closes previous.
@@ -266,8 +271,8 @@ func ScriptsFile(sc *bufio.Scanner) {
 		for i := 0; i < len(lines); i++ {
 			b := []byte(lines[i])
 			if re.Match(b) {
-				//go ban(lines[i], "Scripts")
-				println(len(lines), i, lines[i])
+				go ban(lines[i], "Scripts")
+				//println(len(lines), i, lines[i])
 			}
 		}
 

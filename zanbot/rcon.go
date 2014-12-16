@@ -18,8 +18,13 @@ type rconBanInfo struct {
 	reason   string
 }
 
-func rconManager(ch chan banData, rl chan []rconinfo, testMode bool) {
-	mch := []chan banData{}
+type rconUpdate struct {
+	info int
+	data interface{}
+}
+
+func rconManager(bch chan banData, ubch chan string, bsyncch chan []string, rl chan []rconinfo, testMode bool) {
+	mch := []chan rconUpdate{}
 	f, err := os.OpenFile("./zbot-Log.txt", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
 	if err != nil {
 		panic("cant open log file. ./zbot-Log.txt")
@@ -29,20 +34,33 @@ func rconManager(ch chan banData, rl chan []rconinfo, testMode bool) {
 
 	for {
 		select {
-		case b := <-ch:
-			// fan out ban to all rcon consoles. aint this cool aye :D.
+		case b := <-bch:
+			// fan out ban to all rcon consoles.
 			for i := 0; i < len(mch); i++ {
-				mch[i] <- b
+				mch[i] <- rconUpdate{1, b}
 			}
-			// first load or when the settings file has been moded.
+
+		case ub := <-ubch:
+			// fan out unban to all rcon consoles.
+			for i := 0; i < len(mch); i++ {
+				mch[i] <- rconUpdate{2, ub}
+			}
+
+		case bsync := <-bsyncch:
+			// fan out a query to full sync community bans
+			for i := 0; i < len(mch); i++ {
+				mch[i] <- rconUpdate{3, bsync}
+			}
+
+		// first load or when the settings file has been moded.
 		case nrconl := <-rl:
 			// close all rcons to reboot with new rcon settings
 			for i := 0; i < len(mch); i++ {
 				close(mch[i])
 			}
-			mch = []chan banData{}
+			mch = []chan rconUpdate{}
 			for i := 0; i < len(nrconl); i++ {
-				c := make(chan banData)
+				c := make(chan rconUpdate)
 				go rcon(nrconl[i], c, testMode)
 				mch = append(mch, c)
 			}
@@ -51,7 +69,7 @@ func rconManager(ch chan banData, rl chan []rconinfo, testMode bool) {
 	}
 
 }
-func rcon(rc rconinfo, ch chan banData, testing bool) {
+func rcon(rc rconinfo, ch chan rconUpdate, testing bool) {
 	// bans the client with the given rcon
 
 	//setup rcon connection and make sure it stays connected
@@ -118,44 +136,78 @@ func rcon(rc rconinfo, ch chan banData, testing bool) {
 					s <- scanner.Text()
 				}
 			}(rconch, scanner)
-		//ban a user and make sure we get a "banned response" from rcon before procedding
-		case b, ok := <-ch:
-			// if the channel was closed time to return and let it reconnect.
-			if !ok {
-				return
-			}
+		// get current task from update chanel
+		case d, ok := <-ch:
+			switch d {
 
-			// if he is already on the banning list then we have already tried to ban him so dont dup the bans (if he hasnt actuall been banned it will be cleaned up shortly.)
-			if baning[b.guid].guid != "" {
-				continue
-			}
-			// on first bootup the entire file will be searched so dont add a duplicate ban wait till we recieve the banlist and this list will be sorted on its own later
-			if len(baned) == 0 {
-				println("Adding Ban Check for:", b.name, "- Guid:", b.guid)
-				baning[b.guid] = b
-				continue
-			}
+			// add ban case
+			case 1:
+				b := d.data
+				// if the channel was closed time to return and let it reconnect.
+				if !ok {
+					return
+				}
 
-			// if he has definetly already been banned then fuck what we still doing in here just end. (this check means we can abuse this and pass banlists between rcons and sync them)
-			for i := 0; i < len(baned); i++ {
-				if baned[i].guid == b.guid {
+				// if he is already on the banning list then we have already tried to ban him so dont dup the bans (if he hasnt actuall been banned it will be cleaned up shortly.)
+				if baning[b.guid].guid != "" {
 					continue
 				}
+				// on first bootup the entire file will be searched so dont add a duplicate ban wait till we recieve the banlist and this list will be sorted on its own later
+				if len(baned) == 0 {
+					println("Adding Ban Check for:", b.name, "- Guid:", b.guid)
+					baning[b.guid] = b
+					continue
+				}
+
+				// if he has definetly already been banned then fuck what we still doing in here just end. (this check means we can abuse this and pass banlists between rcons and sync them)
+				for i := 0; i < len(baned); i++ {
+					if baned[i].guid == b.guid {
+						continue
+					}
+				}
+				if testing {
+					log.Println("TestMode:", rc.Host, "| Banned:", b.name, "-", b.guid, "File:", b.file, "Reason:", b.reason)
+					continue
+				}
+				command := "addban " + b.guid + " 0 " + b.name + " | Hacking | PERM | zBot"
+				if b.file == "Web" {
+					command = "addban " + b.guid + " 0 " + b.reason
+				}
+				wi.Write([]byte(command + "\n"))
+				baning[b.guid] = b
+				println("Baning:", b.name, "-", b.guid)
+				//tn := time.Now()
+				log.Println(rc.Host, "| Banned:", b.name, "-", b.guid, "File:", b.file, "Reason:", b.reason)
+
+			// unban case
+			case 2:
+				s := d.data
+				// check banning list if for some reason it is in their.
+				for i := 0; i < len(baning); i++ {
+					if baning[i].guid == s {
+						baning = append(banning[:i], banning[i+1:])
+						i-- //go back one to account for the fact the current element is being removed
+					}
+				}
+
+				// remove from baned list. and unban if found. back to front search so id's are valid.
+				for i := len(baned) - 1; i > 0; i-- {
+					if baned[i].guid == s && baned[i].reason == "zbot | Community | PERM" {
+						command := "removeBan " + baned[i].id + "\n"
+						wi.Write([]byte(command))
+						println("Unbaned:", baned[i].guid)
+						log.Println(rc.Host, "| Unbanned:", s, "Reason:", "Community Unban")
+						baned = append(baned[:i], baned[i+1:])
+						i++ // go back (forward cause reverse) one to account for the current element is being removed
+					}
+				}
+			//sync web bans case
+			case 3:
+				//todo. this section lol.
+				var sa []string
+				sa = d.data
+
 			}
-			if testing {
-				log.Println("TestMode:", rc.Host, "| Banned:", b.name, "-", b.guid, "File:", b.file, "Reason:", b.reason)
-				continue
-			}
-			command := "addban " + b.guid + " 0 " + b.name + " | Hacking | PERM | zBot"
-			if b.file == "Web" {
-				command = "addban " + b.guid + " 0 " + b.reason
-			}
-			wi.Write([]byte(command + "\n"))
-			baning[b.guid] = b
-			println("Baning:", b.name, "-", b.guid)
-			//tn := time.Now()
-			log.Println(rc.Host, "| Banned:", b.name, "-", b.guid, "File:", b.file, "Reason:", b.reason)
-			// add the ban to our list to be checked next time the banlist is scanned. to verify he actually got banned.
 
 		case s := <-rconch:
 			// we scan the console if nothing is ready and break after each line to see if something is ready to be done.
