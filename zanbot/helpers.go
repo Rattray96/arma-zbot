@@ -69,6 +69,11 @@ func getPlayerName(s string) string {
 	if pos == -1 {
 		pos = strings.Index(s, " - Compile Block")
 	}
+	if pos == -1 {
+		println("Cant get player name")
+		log.Fatal("Failed to get player name from string", s)
+		return "Zbot MSG: Cant Get Player Name"
+	}
 	s = s[21:pos]
 	pos = strings.LastIndex(s, "(")
 	return string(s[0 : pos-1])

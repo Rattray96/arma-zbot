@@ -20,7 +20,7 @@ type rconBanInfo struct {
 
 type rconUpdate struct {
 	info int
-	data interface{}
+	data banData
 }
 
 func rconManager(bch chan banData, ubch chan string, bsyncch chan []string, rl chan []rconinfo, testMode bool) {
@@ -138,7 +138,7 @@ func rcon(rc rconinfo, ch chan rconUpdate, testing bool) {
 			}(rconch, scanner)
 		// get current task from update chanel
 		case d, ok := <-ch:
-			switch d {
+			switch d.info {
 
 			// add ban case
 			case 1:
@@ -166,7 +166,7 @@ func rcon(rc rconinfo, ch chan rconUpdate, testing bool) {
 					}
 				}
 				if testing {
-					log.Println("TestMode:", rc.Host, "| Banned:", b.name, "-", b.guid, "File:", b.file, "Reason:", b.reason)
+					//log.Println("TestMode:", rc.Host, "| Banned:", b.name, "-", b.guid, "File:", b.file, "Reason:", b.reason)
 					continue
 				}
 				command := "addban " + b.guid + " 0 " + b.name + " | Hacking | PERM | zBot"
