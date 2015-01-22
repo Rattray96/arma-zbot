@@ -271,13 +271,15 @@ func ScriptsFile(sc *bufio.Scanner) {
 		for i := 0; i < len(lines); i++ {
 			b := []byte(lines[i])
 			if re.Match(b) {
-				go ban(lines[i], "Scripts")
-				//println(len(lines), i, lines[i])
+				// need a good parser for hackers in scripts file. to do when cbf or if someone is awesome with regex. and awesome
+				// with setting up the scripts file to bring up the info needed to negate false positives and only show hackers
+				// in the limited chars before the log cuts it off. >.> GGAAAYYYYYYY
+				//go ban(lines[i], "Scripts")
+				//log.println(len(lines), i, lines[i])
 			}
 		}
 
 	}
-	println("finished")
 }
 
 func ban(s string, f string) {
