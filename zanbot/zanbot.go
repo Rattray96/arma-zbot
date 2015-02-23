@@ -141,11 +141,15 @@ func filemonitor(filename string, fn func(*bufio.Scanner)) {
 
 }
 
-func validateLine(s string, t int) int {
-	r := 0
+func validateLine(s string, t int) (r int) {
+
+	r = 0
 	l := len(s) - 1
 	if l < 0 {
 		l = 0
+	}
+	if l == 0 {
+		return
 	}
 	re, _ := regexp.Compile(`^\d\d\.\d\d\.\d\d\d\d \d\d:\d\d:\d\d:.*`)
 	switch t {
@@ -159,7 +163,7 @@ func validateLine(s string, t int) int {
 		}
 	case 1:
 		if l == 0 {
-			return 0
+			return
 		}
 		if (string(s[l]) == string("]") && l > 71) && re.Match([]byte(s)) {
 			if l != strings.Index(s, "]") {
@@ -176,7 +180,7 @@ func validateLine(s string, t int) int {
 		}
 
 	}
-	return r
+	return
 }
 
 func getline(sc *bufio.Scanner, t int) ([]string, bool) {
@@ -187,7 +191,7 @@ func getline(sc *bufio.Scanner, t int) ([]string, bool) {
 			lines = append(lines, txt)
 			return lines, true
 		}
-		// if not valide we now have to get a valid line and have to get the following line after it and also return that to avoid skipping lines
+		// if not valid we now have to get a valid line and have to get the following line after it and also return that to avoid skipping lines
 		// for loop to make sure we dont stop till all conditions met
 		for {
 			if !sc.Scan() {
@@ -212,6 +216,11 @@ func getline(sc *bufio.Scanner, t int) ([]string, bool) {
 
 // RemoteExecFile calls remote exec
 func RemoteExecFile(sc *bufio.Scanner) {
+	defer func() {
+		if r := recover(); r != nil {
+			fmt.Println("Recovered in RemoteExecFile", r)
+		}
+	}()
 	for {
 		lines, b := getline(sc, 0)
 		if !b {
